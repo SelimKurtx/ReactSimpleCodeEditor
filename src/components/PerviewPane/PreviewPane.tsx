@@ -32,7 +32,7 @@ const PreviewPane: FC<IPreviewPage> = ({ htmlCode, cssCode, jsCode }) => {
         <iframe className="w-100 h-100" srcDoc={code} />
       ) : (
         <h1 className="text-center display-4 my-2">
-          Please add html, css and js code to get the output
+          Please Add Html, CSS and JavaScript Code to Get the Output
         </h1>
       )}
     </div>
