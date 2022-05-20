@@ -1,29 +1,30 @@
-import { useState } from 'react'
-import './App.css'
-import EditorsPane from './components/EditorsPane/EditorsPane'
-import PreviewPane from './components/PreviewPane/PreviewPane'
+import { useState } from "react";
+
+import EditorsPane from "./components/EditorsPane/EditorsPane";
+import PreviewPane from "./components/PerviewPane/PreviewPane";
+
+import "./App.css";
 
 const App = () => {
-  
-  const [htmlCode,setHtmlCode] = useState<string>("");
-  const [cssCode,setcssCode] = useState<string>("")
-  const [jsCode,setjsCode] = useState<string>("")
+  const [htmlCode, setHtmlCode] = useState<string>("");
+  const [cssCode, setCssCode] = useState<string>("");
+  const [jsCode, setJsCode] = useState<string>("");
 
   return (
-    <div className="app container-fluid">
-      <div className='row'>
-        <EditorsPane 
+    <div className="container-fluid">
+      <div className="row">
+        <EditorsPane
           htmlCode={htmlCode}
           cssCode={cssCode}
           jsCode={jsCode}
           setHtmlCode={setHtmlCode}
-          setcssCode={setcssCode}
-          setjsCode={setjsCode}
+          setCssCode={setCssCode}
+          setJsCode={setJsCode}
         />
-        <PreviewPane />
+        <PreviewPane htmlCode={htmlCode} cssCode={cssCode} jsCode={jsCode} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

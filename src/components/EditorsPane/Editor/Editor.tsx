@@ -1,28 +1,42 @@
-import { FunctionComponent as FC } from "react";
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import { FunctionComponent as FC, useState } from "react";
+
 import IEditor from "./IEditor";
+
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
-import "codemirror/mode/htmlmixed/htmlmixed";
+import "codemirror/mode/css/css";
+import { UnControlled as CodeMirror } from "react-codemirror2";
 
-const Editor: FC<IEditor> = ({ lang , code , setCode}) => {
+import "./Editor.css";
+
+const Editor: FC<IEditor> = ({ lang, code, setCode }) => {
+  const [isOpened, setIsOpened] = useState<boolean>(true);
+
   return (
-    <>
-      <button className="btn btn-secondary w-100 text-title rounded-0">{lang}</button>
-      <CodeMirror
-        value={code}
-        options={{
-          mode: lang === "html" ? "xml" : lang,
-          theme: 'material',
-          lineNumbers: true
-        }}
-        onChange={(editor, data, value) => {
-          setCode(value);
-        }}
-      />
-    </>
+    <div className="position-relative display-flex flex-row">
+      <button
+        onClick={() => setIsOpened((prevState) => !prevState)}
+        className="btn btn-secondary position-relative  text-title w-100 rounded-0"
+      >
+        {lang}
+      </button>
+      {isOpened && (
+        <CodeMirror
+          onChange={(editor, data, value) => setCode(value)}
+          options={{
+            mode: lang === "html" ? "xml" : lang,
+            theme: "material",
+            lineNumbers: true,
+            inputStyle: "textarea",
+            lineWrapping: true,
+            lint: true,
+          }}
+          value={code}
+        />
+      )}
+    </div>
   );
 };
 
