@@ -1,23 +1,26 @@
-import {FunctionComponent as FC} from 'react'
-import IEditorsPanel from './IEditorsPane'
-import "./EditorsPane.css"
-import Editor from './Editor/Editor'
+import { FunctionComponent as FC } from "react";
 
-const EditorsPane : FC <IEditorsPanel> = ({
-    htmlCode,
-    cssCode,
-    jsCode,
-    setHtmlCode,
-    setcssCode,
-    setjsCode
+import Editor from "./Editor/Editor";
+
+import IEditorsPane from "./IEditorsPane";
+
+import "./EditorsPane.css";
+
+const EditorsPane: FC<IEditorsPane> = ({
+  htmlCode,
+  cssCode,
+  jsCode,
+  setHtmlCode,
+  setCssCode,
+  setJsCode,
 }) => {
-  return (    
-    <div className='EditorsPane col-md-4 position-relative bg-dark px-0'>
-      <Editor lang="HTML" code={htmlCode} setCode={setHtmlCode} />
-      <Editor lang="CSS" code={cssCode} setCode={setcssCode} />
-      <Editor lang="Javascript" code={jsCode} setCode={setjsCode} />
+  return (
+    <div className="EditorsPane col-md-4 position-relative bg-dark  px-0">
+      <Editor lang="html" code={htmlCode} setCode={setHtmlCode} />
+      <Editor lang="css" code={cssCode} setCode={setCssCode} />
+      <Editor lang="javascript" code={jsCode} setCode={setJsCode} />
     </div>
-  )
-}
+  );
+};
 
-export default EditorsPane
+export default EditorsPane;
